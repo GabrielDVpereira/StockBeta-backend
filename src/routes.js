@@ -8,14 +8,13 @@ import authMiddleware from "./middlewares/authorization";
 const routes = express.Router();
 
 routes.post("/user", UserController.create);
+routes.post("/auth", SessionController.auth);
 
+routes.use(authMiddleware);
 routes.post("/category", CategoryController.create);
 routes.get("/categories/:userId", CategoryController.index);
-
 routes.post("/product", ProductController.create);
-routes.get("/products/:userId", authMiddleware, ProductController.index);
+routes.get("/products/:userId", ProductController.index);
 routes.put("/product/:productId", ProductController.update);
-
-routes.post("/auth", SessionController.auth);
 
 export default routes;

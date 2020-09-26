@@ -1,5 +1,6 @@
 import User from "../models/User";
 import generateHash from "../utils/generateHash";
+import generateToken from "../utils/generateToken";
 
 class UserCotroller {
   async create(req, res) {
@@ -12,9 +13,16 @@ class UserCotroller {
         password_hash,
         email,
       });
-      res.json(user);
+      const jwt_payload = {
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+      };
+      const token = generateToken(jwt_payload);
+      return res.header("x-auth-token", token).json(user);
     } catch (error) {
-      res
+      console.log(error.message);
+      return res
         .status(400)
         .json({ message: "Não foi possível criar seu usuário", error });
     }

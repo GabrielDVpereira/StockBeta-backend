@@ -12,7 +12,6 @@ class ProductController {
   async index(req, res) {
     const { userId } = req.params;
     const user = req.user;
-    console.log("USER FROM PRODUCT CONTROLLER", user);
     try {
       const products = await Product.find({ user: userId }).populate(
         "category"
