@@ -5,6 +5,7 @@ import generateToken from "../utils/generateToken";
 class UserCotroller {
   async create(req, res) {
     const { name, password, email } = req.body;
+
     const password_hash = await generateHash(password);
 
     try {
