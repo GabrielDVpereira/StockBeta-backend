@@ -1,2 +1,4 @@
 node_modules
 .env
+mongo
+minikube-linux-amd64
