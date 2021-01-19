@@ -25,7 +25,7 @@ class UserCotroller {
       console.log(error.message);
       return res
         .status(400)
-        .json({ message: "Não foi possível criar seu usuário", error });
+        .json({ message: "Something went wrong to create your user", error });
     }
   }
 }

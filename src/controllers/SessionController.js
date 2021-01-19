@@ -9,7 +9,7 @@ class SessionController {
       const user = await User.findOne({ email });
 
       if (!user) {
-        throw { message: "Não existe usuário com esse endereço de email" };
+        throw { message: "User not found for this email address" };
       }
 
       const isPasswordValid = await bcrypt.compare(
@@ -26,7 +26,7 @@ class SessionController {
         const jwt_token = generateToken(jwt_payload);
         return res.header("x-auth-token", jwt_token).json(user);
       } else {
-        throw { message: "Verifique suas credenciais" };
+        throw { message: "Check your credentials" };
       }
     } catch (error) {
       return res.status(400).json({ message: error.message || error });
