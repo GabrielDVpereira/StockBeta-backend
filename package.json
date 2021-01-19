@@ -17,7 +17,7 @@
   },
   "scripts": {
     "dev": "nodemon --exec sucrase-node src/index.js",
-    "prestart": "  sucrase ./src -d ./dist --transforms imports",
+    "prestart": "sucrase ./src -d ./dist --transforms imports",
     "start": "node dist/index"
   }
 }
